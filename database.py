@@ -480,19 +480,7 @@ class Database:
     
     
     
-    def rowcheck(self, table_name, lock, pointer):
-    
-        if table_name[:4]=='meta':  
-            return False
 
-        with open(f'{self.savedir}/meta_locks.pkl', 'rb') as f:
-            
-            self.tables.update({'meta_locks': pickle.load(f)})
-            self.meta_locks = self.tables['meta_locks']   
-            
-        rowXLock = self.tables['meta_locks']._select_where('*', f'table_name=={table_name}').rowXLock[0]            
-        rowSLock = self.tables['meta_locks']._select_where('*', f'table_name=={table_name}').rowSLock[0]     
-    
             
     
     
